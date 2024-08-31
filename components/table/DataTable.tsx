@@ -24,8 +24,7 @@ import { decryptKey } from "@/lib/utils";
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
-  // data: TData[];
-  data:any;
+  data: TData[];
 }
 
 export function DataTable<TData, TValue>({
@@ -83,14 +82,9 @@ export function DataTable<TData, TValue>({
               >
                 {row.getVisibleCells().map((cell) => (
                   <TableCell key={cell.id}>
-                    
-                    {/* {flexRender(cell.column.columnDef.cell, cell.getContext())} */}
-                    {cell.column.columnDef.cell && typeof window !== 'undefined' ? flexRender(
-        cell.column.columnDef.cell,
-        cell.getContext()
-    ): <p>''</p>}</TableCell>
-                )
-                )}
+                    {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                  </TableCell>
+                ))}
               </TableRow>
             ))
           ) : (
@@ -110,15 +104,12 @@ export function DataTable<TData, TValue>({
           disabled={!table.getCanPreviousPage()}
           className="shad-gray-btn"
         >
-          <div className="">
-
           <Image
             src="/assets/icons/arrow.svg"
             width={24}
             height={24}
             alt="arrow"
           />
-          </div>
         </Button>
         <Button
           variant="outline"
@@ -127,8 +118,6 @@ export function DataTable<TData, TValue>({
           disabled={!table.getCanNextPage()}
           className="shad-gray-btn"
         >
-          <div className="">
-
           <Image
             src="/assets/icons/arrow.svg"
             width={24}
@@ -136,7 +125,6 @@ export function DataTable<TData, TValue>({
             alt="arrow "
             className="rotate-180"
           />
-          </div>
         </Button>
       </div>
     </div>
